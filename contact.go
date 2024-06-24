@@ -58,6 +58,11 @@ func (c *ContactService) FindByUserID(userID string) (Contact, error) {
 	return c.findWithIdentifiers(UserIdentifiers{UserID: userID})
 }
 
+// FindByEmail looks up a Contact by their Email.
+func (c *ContactService) FindByEmail(email string) (Contact, error) {
+	return c.findWithIdentifiers(UserIdentifiers{Email: email})
+}
+
 func (c *ContactService) findWithIdentifiers(identifiers UserIdentifiers) (Contact, error) {
 	return c.Repository.find(identifiers)
 }
